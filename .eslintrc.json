@@ -26,6 +26,7 @@
       "ignoreComments": true,
       "ignoreTrailingComments": true,
       "ignoreUrls": true
-    }]
+    }],
+    "react/jsx-one-expression-per-line": "off"
   }
 }
