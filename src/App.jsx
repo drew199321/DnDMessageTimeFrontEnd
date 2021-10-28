@@ -9,6 +9,7 @@ import {
 import PrivateRoute from './_components/PrivateRoute';
 import Landing from './Landing';
 import Chatroom from './Chatroom';
+import Registration from './Registration';
 import './App.css';
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={Landing} />
+        <Route exact path="/registration" component={Registration} />
         <PrivateRoute exact path="/chatroom" component={Chatroom} />
         <Redirect from="*" to="/" />
       </Switch>

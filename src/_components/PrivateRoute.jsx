@@ -10,7 +10,6 @@ export default function PrivateRoute({ component: Component, ...rest }) {
       {...rest}
       render={(props) => {
         if (!authToken.isAuthenticated) {
-          console.log(authToken);
           return <Redirect to={{ pathname: '/' }} />;
         }
         return <Component {...props} />;

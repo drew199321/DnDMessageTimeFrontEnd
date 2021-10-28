@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
@@ -26,6 +27,8 @@ function Landing() {
 
     if (authToken.isAuthenticated) {
       history.push('/chatroom');
+    } else if (authToken.err) {
+      console.log('network error');
     } else {
       // TODO: Tell user the login failed
       console.log('login failed');
@@ -40,6 +43,7 @@ function Landing() {
         <input type="text" placeholder="password" {...register('password', { required: true })} />
         <button type="submit">Login</button>
       </form>
+      <Link to="/registration">New User?</Link>
     </div>
   );
 }
