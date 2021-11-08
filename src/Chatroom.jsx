@@ -10,6 +10,7 @@ export default function Chatroom() {
     logout();
     history.push('/');
   }
+
   return (
     <div>
       <h1>Chatroom page</h1>

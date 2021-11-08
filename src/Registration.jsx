@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
@@ -9,6 +9,7 @@ import authToken from './_helpers/auth';
 export default function Registration() {
   const { register, handleSubmit } = useForm();
   const history = useHistory();
+  const { error, setError } = useState();
 
   async function registerUser(data) {
     await axios.post(`${serverEndpoint}/register`, data)
@@ -17,17 +18,16 @@ export default function Registration() {
         authToken.isAuthenticated = res.data.isAuthenticated;
         authToken.token = res.data.token;
         // TODO: Should also save authToken in session cashe
-      }).catch((err) => {
-        console.log(err); // TODO: Tell user that there is a server error
-      });
+      }).catch((err) => setError(err));
+
     if (authToken.isAuthenticated) {
       history.push('/chatroom');
-    } else if (authToken.err) {
-      console.log('network error');
     } else {
-      console.log('Username is already taken'); // TODO: tell user that username is taken
+      console.log(error);
+      console.log('login failed'); // TODO: Tell user there was error
     }
   }
+
   return (
     <div>
       <h1>Registration page</h1>

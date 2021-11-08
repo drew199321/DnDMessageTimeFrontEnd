@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -10,6 +10,7 @@ import authToken from './_helpers/auth';
 function Landing() {
   const { register, handleSubmit } = useForm();
   const history = useHistory();
+  const { error, setError } = useState();
 
   async function submitLogin(data) {
     await axios.get(`${serverEndpoint}/login`, {
@@ -21,17 +22,13 @@ function Landing() {
       authToken.isAuthenticated = res.data.isAuthenticated;
       authToken.token = res.data.token;
       // TODO: Should also save authToken in session cashe
-    }).catch((err) => {
-      console.log(err); // TODO: Tell user that there is a server error
-    });
+    }).catch((err) => setError(err));
 
     if (authToken.isAuthenticated) {
       history.push('/chatroom');
-    } else if (authToken.err) {
-      console.log('network error');
     } else {
-      // TODO: Tell user the login failed
-      console.log('login failed');
+      console.log(error);
+      console.log('login failed'); // TODO: Tell user there was error
     }
   }
 
