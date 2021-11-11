@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import io from 'socket.io-client';
 
+import serverEndpoint from '../_helpers/serverEndpoint';
 import Messages from './Messages';
 import MessageInput from './MessageInput';
 import './Chatroom.css';
@@ -15,7 +16,7 @@ export default function Chatroom() {
     const data = localStorage.authToken;
     if (data) setUserType(JSON.parse(data).userType);
     else setUserType('No user Type... should not happen');
-    const newSocket = io(`http://${window.location.hostname}:4000`);
+    const newSocket = io(`${serverEndpoint}`); // TODO: should route deeper not base
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);
