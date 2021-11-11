@@ -4,21 +4,24 @@ import io from 'socket.io-client';
 
 import Messages from './Messages';
 import MessageInput from './MessageInput';
-import { logout } from '../_helpers/auth';
 import './Chatroom.css';
 
 export default function Chatroom() {
   const history = useHistory();
   const [socket, setSocket] = useState(null);
+  const [userType, setUserType] = useState();
 
   useEffect(() => {
+    const data = localStorage.authToken;
+    if (data) setUserType(JSON.parse(data).userType);
+    else setUserType('No user Type... should not happen');
     const newSocket = io(`http://${window.location.hostname}:4000`);
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);
 
   function handleLogout() {
-    logout();
+    localStorage.removeItem('authToken');
     history.push('/');
   }
 
@@ -27,7 +30,7 @@ export default function Chatroom() {
       <div className="chatroom">
         <header className="chatroom-header">
           <button type="button" onClick={handleLogout}>Logout</button>
-          Chatroom page
+          Chatroom page - {userType}
         </header>
         { socket ? (
           <div className="chat-container">

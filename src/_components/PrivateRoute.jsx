@@ -2,14 +2,16 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import authToken from '../_helpers/auth';
-
 export default function PrivateRoute({ component: Component, ...rest }) {
+  let isAuthenticated = false;
+  const data = localStorage.authToken;
+  if (data) isAuthenticated = JSON.parse(data).isAuthenticated;
+
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (!authToken.isAuthenticated) {
+        if (!isAuthenticated) {
           return <Redirect to={{ pathname: '/' }} />;
         }
         return <Component {...props} />;

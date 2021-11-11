@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
 import serverEndpoint from './_helpers/serverEndpoint';
-import authToken from './_helpers/auth';
 
 export default function Registration() {
   const { register, handleSubmit } = useForm();
@@ -12,15 +11,16 @@ export default function Registration() {
   const { error, setError } = useState();
 
   async function registerUser(data) {
-    await axios.post(`${serverEndpoint}/register`, data)
+    const isAuthenticated = await axios.post(`${serverEndpoint}/register`, data)
       .then((res) => {
-        console.log(res);
-        authToken.isAuthenticated = res.data.isAuthenticated;
-        authToken.token = res.data.token;
-        // TODO: Should also save authToken in session cashe
-      }).catch((err) => setError(err));
+        localStorage.authToken = JSON.stringify({ ...res.data });
+        return res.data.isAuthenticated;
+      }).catch((err) => {
+        setError(err);
+        return false;
+      });
 
-    if (authToken.isAuthenticated) {
+    if (isAuthenticated) {
       history.push('/chatroom');
     } else {
       console.log(error);
