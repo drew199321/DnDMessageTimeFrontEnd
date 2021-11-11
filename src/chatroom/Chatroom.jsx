@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 
 import Messages from './Messages';
 import MessageInput from './MessageInput';
-import { logout } from './_helpers/auth';
+import { logout } from '../_helpers/auth';
 import './Chatroom.css';
 
 export default function Chatroom() {
