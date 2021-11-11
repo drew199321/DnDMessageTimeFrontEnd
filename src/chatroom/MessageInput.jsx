@@ -2,11 +2,15 @@
 import React, { useState } from 'react';
 import './MessageInput.css';
 
-export default function NewMessage({ socket }) {
+export default function NewMessage({ username, socket }) { // TODO: username should be removed
   const [value, setValue] = useState('');
   const submitForm = (e) => {
+    // TODO: Restrict user input
     e.preventDefault();
-    socket.emit('message', value);
+    socket.emit('message', { // TODO: username should be removed only use value
+      username,
+      value,
+    });
     setValue('');
   };
 

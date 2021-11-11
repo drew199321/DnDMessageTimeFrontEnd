@@ -18,7 +18,7 @@ function Landing() {
         password: data.password,
       },
     }).then((res) => {
-      localStorage.authToken = JSON.stringify({ ...res.data });
+      localStorage.user = JSON.stringify({ ...res.data });
       return res.data.isAuthenticated;
     }).catch((err) => {
       setError(err);

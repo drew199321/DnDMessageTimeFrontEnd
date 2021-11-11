@@ -13,7 +13,7 @@ export default function Registration() {
   async function registerUser(data) {
     const isAuthenticated = await axios.post(`${serverEndpoint}/register`, data)
       .then((res) => {
-        localStorage.authToken = JSON.stringify({ ...res.data });
+        localStorage.user = JSON.stringify({ ...res.data });
         return res.data.isAuthenticated;
       }).catch((err) => {
         setError(err);

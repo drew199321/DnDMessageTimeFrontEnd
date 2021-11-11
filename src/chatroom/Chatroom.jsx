@@ -10,33 +10,38 @@ import './Chatroom.css';
 export default function Chatroom() {
   const history = useHistory();
   const [socket, setSocket] = useState(null);
-  const [userType, setUserType] = useState();
+  const [user, setUser] = useState();
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const data = localStorage.authToken;
-    if (data) setUserType(JSON.parse(data).userType);
-    else setUserType('No user Type... should not happen');
+    const data = localStorage.user;
+    if (data) setUser(JSON.parse(data));
+    else setError('Corrupted local Storage Data');
     const newSocket = io(`${serverEndpoint}`); // TODO: should route deeper not base
     setSocket(newSocket);
+    setLoading(false);
     return () => newSocket.close();
   }, [setSocket]);
 
   function handleLogout() {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
     history.push('/');
   }
 
+  if (loading) return <h1>Loading Messages</h1>;
+  if (error) return <h1>{error}</h1>;
   return (
     <div>
       <div className="chatroom">
         <header className="chatroom-header">
           <button type="button" onClick={handleLogout}>Logout</button>
-          Chatroom page - {userType}
+          Chatroom page - {user.userType}
         </header>
         { socket ? (
           <div className="chat-container">
             <Messages socket={socket} />
-            <MessageInput socket={socket} />
+            <MessageInput socket={socket} username={user.username} /> {/* TODO: username should be removed */}
           </div>
         ) : (
           <div>Not Connected</div>
