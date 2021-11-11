@@ -36,6 +36,7 @@ function Landing() {
     <div>
       <h1>Landing Page</h1>
       <form onSubmit={handleSubmit(submitLogin)}>
+        <input type="text" placeholder="groupName" {...register('groupName', { required: true })} />
         <input type="text" placeholder="username" {...register('username', { required: true })} />
         <input type="text" placeholder="password" {...register('password', { required: true })} />
         <button type="submit">Login</button>

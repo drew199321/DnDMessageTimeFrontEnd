@@ -32,8 +32,17 @@ export default function Registration() {
     <div>
       <h1>Registration page</h1>
       <form onSubmit={handleSubmit(registerUser)}>
+        <input type="text" placeholder="groupName" {...register('groupName', { required: true })} />
         <input type="text" placeholder="username" {...register('username', { required: true })} />
         <input type="text" placeholder="password" {...register('password', { required: true })} />
+        <label htmlFor="field-admin">
+          <input type="radio" id="field-admin" name="userType" value="admin" {...register('userType', { required: true })} />
+          Admin
+        </label>
+        <label htmlFor="field-user">
+          <input type="radio" id="field-user" name="userType" value="user" {...register('userType', { required: true })} />
+          User
+        </label>
         <button type="submit">Register</button>
       </form>
     </div>
