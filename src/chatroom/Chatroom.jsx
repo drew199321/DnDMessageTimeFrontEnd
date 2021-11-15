@@ -16,12 +16,22 @@ export default function Chatroom() {
 
   useEffect(() => {
     const data = localStorage.user;
-    if (data) setUser(JSON.parse(data));
-    else setError('Corrupted local Storage Data');
-    const newSocket = io(`${serverEndpoint}`); // TODO: should route deeper not base
-    setSocket(newSocket);
-    setLoading(false);
-    return () => newSocket.close();
+    if (data) {
+      const userData = JSON.parse(data);
+      setUser(userData);
+      const newSocket = io(`${serverEndpoint}`, {
+        query: {
+          username: userData.username,
+          userType: userData.userType,
+          token: userData.token,
+        },
+      }); // TODO: should route deeper not base
+      setSocket(newSocket);
+      setLoading(false);
+      return () => newSocket.close();
+    }
+    setError('Corrupted local Storage Data');
+    return () => {};
   }, [setSocket]);
 
   function handleLogout() {
@@ -29,8 +39,8 @@ export default function Chatroom() {
     history.push('/');
   }
 
-  if (loading) return <h1>Loading Messages</h1>;
   if (error) return <h1>{error}</h1>;
+  if (loading) return <h1>Loading Messages</h1>;
   return (
     <div>
       <div className="chatroom">
@@ -41,7 +51,7 @@ export default function Chatroom() {
         { socket ? (
           <div className="chat-container">
             <Messages socket={socket} />
-            <MessageInput socket={socket} username={user.username} /> {/* TODO: username should be removed */}
+            <MessageInput socket={socket} user={user} />
           </div>
         ) : (
           <div>Not Connected</div>

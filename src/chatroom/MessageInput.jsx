@@ -2,13 +2,14 @@
 import React, { useState } from 'react';
 import './MessageInput.css';
 
-export default function NewMessage({ username, socket }) { // TODO: username should be removed
+export default function NewMessage({ user, socket }) {
   const [value, setValue] = useState('');
   const submitForm = (e) => {
     // TODO: Restrict user input
+    // TODO: MessageType should be dynamic based on the type of messesage they want to send not userType
     e.preventDefault();
-    socket.emit('message', { // TODO: username should be removed only use value
-      username,
+    socket.emit('message', {
+      messageType: user.userType === 'member' ? 'direct' : 'brodcast',
       value,
     });
     setValue('');
