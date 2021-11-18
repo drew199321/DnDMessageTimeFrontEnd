@@ -9,7 +9,7 @@ import serverEndpoint from './_helpers/serverEndpoint';
 function Landing() {
   const { register, handleSubmit } = useForm();
   const history = useHistory();
-  const { error, setError } = useState();
+  const [error, setError] = useState();
 
   async function submitLogin(data) {
     const isAuthenticated = await axios.get(`${serverEndpoint}/login`, {

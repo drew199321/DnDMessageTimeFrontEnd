@@ -8,7 +8,7 @@ import serverEndpoint from './_helpers/serverEndpoint';
 export default function Registration() {
   const { register, handleSubmit } = useForm();
   const history = useHistory();
-  const { error, setError } = useState();
+  const [error, setError] = useState();
 
   async function registerUser(data) {
     const isAuthenticated = await axios.post(`${serverEndpoint}/register`, data)
