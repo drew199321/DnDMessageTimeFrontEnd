@@ -3,7 +3,10 @@ body{
     padding: 0;
     background-color: white;
     font-family: sans-serif;
+    background-image: url("https://gal.cdn.renderosity.com/images/image_2832332/c65b0edfa2c2d668fd029f8a170d9bc7_original.jpg?v=1535223715")    
 }
+
+
 .landing{
     background-color: #00B2FF;
     width: 320px;

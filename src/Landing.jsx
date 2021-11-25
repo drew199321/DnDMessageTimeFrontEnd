@@ -39,7 +39,7 @@ function Landing() {
       <form onSubmit={handleSubmit(submitLogin)}>
         <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
         <input type="text" id="floating-input" placeholder="Username" {...register('username', { required: true })} />
-        <input type="text" id="floating-input" placeholder="Password" {...register('password', { required: true })} />
+        <input type="password" id="floating-input" placeholder="Password" {...register('password', { required: true })} />
         <button type="submit">Login</button>
       </form>
       <Link to="/registration">New User?</Link>

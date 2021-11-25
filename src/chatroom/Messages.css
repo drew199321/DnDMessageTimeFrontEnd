@@ -1,9 +1,11 @@
 .message-list {
   max-width: 500px;
   width: 100%;
+  background-color: white;
 }
 
 .message-container {
+  max-width: 500px;
   display: flex;
   flex-direction: row;
   padding: 0.5rem;
