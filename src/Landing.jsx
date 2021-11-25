@@ -34,11 +34,12 @@ function Landing() {
   }
 
   return (
-    <div>
-      <h1>Landing Page</h1>
+    <div className="landing">
+      <h1>DnD Message Time</h1>
       <form onSubmit={handleSubmit(submitLogin)}>
-        <input type="text" placeholder="username" {...register('username', { required: true })} />
-        <input type="text" placeholder="password" {...register('password', { required: true })} />
+        <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+        <input type="text" id="floating-input" placeholder="Username" {...register('username', { required: true })} />
+        <input type="text" id="floating-input" placeholder="Password" {...register('password', { required: true })} />
         <button type="submit">Login</button>
       </form>
       <Link to="/registration">New User?</Link>
