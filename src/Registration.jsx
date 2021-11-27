@@ -19,7 +19,6 @@ export default function Registration() {
         setError(err);
         return false;
       });
-
     if (isAuthenticated) {
       history.push('/chatroom');
     } else {
@@ -39,7 +38,7 @@ export default function Registration() {
           Admin
         </label>
         <label htmlFor="field-user">
-          <input type="radio" id="field-user" name="userType" value="user" {...register('userType', { required: true })} />
+          <input type="radio" id="field-user" name="userType" value="member" {...register('userType', { required: true })} />
           User
         </label>
         <button type="submit">Register</button>

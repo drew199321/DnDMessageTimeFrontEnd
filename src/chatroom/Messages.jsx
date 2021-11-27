@@ -33,7 +33,7 @@ export default function Messages({ socket }) {
             title={`Sent at ${new Date(message.time).toLocaleTimeString()}`}
           >
             <span className="user">{message.username}:</span>
-            <span className="message">{message.value}</span>
+            <span className="message">{message.content}</span>
             <span className="date">{new Date(message.time).toLocaleTimeString()}</span>
           </div>
         ))}

@@ -46,11 +46,11 @@ export default function Chatroom() {
       <div className="chatroom">
         <header className="chatroom-header">
           <button type="button" onClick={handleLogout}>Logout</button>
-          Chatroom page - {user.userType}
+          Chatroom page - {user.username}
         </header>
         { socket ? (
           <div className="chat-container">
-            <Messages socket={socket} />
+            <Messages socket={socket} user={user} />
             <MessageInput socket={socket} user={user} />
           </div>
         ) : (
