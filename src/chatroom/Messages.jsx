@@ -2,16 +2,20 @@
 import React, { useEffect, useState } from 'react';
 import './Messages.css';
 
-export default function Messages({ socket }) {
+export default function Messages({ socket, user }) {
   const [messages, setMessages] = useState({});
 
   useEffect(() => {
     const messageListener = (message) => {
-      setMessages((prevMessages) => {
-        const newMessages = { ...prevMessages };
-        newMessages[message.id] = message;
-        return newMessages;
-      });
+      console.log(user);
+      console.log(message);
+      if (message.type === 'brodcast' || user.userType === 'admin' || message.username === user.username) {
+        setMessages((prevMessages) => {
+          const newMessages = { ...prevMessages };
+          newMessages[message.id] = message;
+          return newMessages;
+        });
+      }
     };
 
     socket.on('message', messageListener);
