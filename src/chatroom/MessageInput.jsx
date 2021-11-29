@@ -9,7 +9,7 @@ export default function NewMessage({ user, socket }) {
     // TODO: MessageType should be dynamic based on the type of messesage they want to send not userType
     e.preventDefault();
     socket.emit('message', {
-      messageType: user.userType === 'member' ? 'direct' : 'brodcast',
+      type: user.userType === 'member' ? 'direct' : 'brodcast',
       value,
     });
     setValue('');

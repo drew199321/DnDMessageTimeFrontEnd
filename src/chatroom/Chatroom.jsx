@@ -21,6 +21,7 @@ export default function Chatroom() {
       setUser(userData);
       const newSocket = io(`${serverEndpoint}`, {
         query: {
+          userid: userData.userid,
           username: userData.username,
           userType: userData.userType,
           token: userData.token,
