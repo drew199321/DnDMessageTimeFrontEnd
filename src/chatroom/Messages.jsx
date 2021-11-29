@@ -7,8 +7,6 @@ export default function Messages({ socket, user }) {
 
   useEffect(() => {
     const messageListener = (message) => {
-      console.log(user);
-      console.log(message);
       if (message.type === 'brodcast' || user.userType === 'admin' || message.username === user.username) {
         setMessages((prevMessages) => {
           const newMessages = { ...prevMessages };
