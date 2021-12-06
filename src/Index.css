@@ -16,10 +16,14 @@ body{
     position: absolute;
     transform: translate(-50%,-50%);
     box-sizing: border-box;
+    border-radius: 25px; 
+    display: inline;
     padding: 70px 30px;
-    border-radius: 25px;
-    
+
 }
+
+
+
 .landing button{
     border-radius: 15px;
     position: relative;
@@ -28,20 +32,33 @@ body{
     background-color: black;
     color: white;
     font-size: 20px;
+    grid-auto-flow: column;
 }
-.landing input{
-    border-radius: 15px;
-    position: relative;
+
+
+
+label[for=field-user]{
+    margin-top: -1px;
+    display: inline-block;
+
+}
+
+label[for=field-admin]{
+    margin-top: -1px;
+    float: right;
+    text-align: right;
+}
+
+
+
+input:focus {
     width: 100%;
-    margin-bottom: 20px;
-    
+    background-color: lightblue;
 }
+
 h1{
-    padding: 0 0 20px;
     text-align: center;
+    padding: 0 0 20px;
     font-size: 28px;
-    color: white;
-}
-.Link{
     color: white;
 }
