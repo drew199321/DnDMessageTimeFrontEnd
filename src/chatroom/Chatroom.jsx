@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import io from 'socket.io-client';
 
-import serverEndpoint from '../_helpers/serverEndpoint';
+//import serverEndpoint from '../_helpers/serverEndpoint';
 import Messages from './Messages';
 import MessageInput from './MessageInput';
 import './Chatroom.css';
@@ -19,13 +19,17 @@ export default function Chatroom() {
     if (data) {
       const userData = JSON.parse(data);
       setUser(userData);
-      const newSocket = io(`${serverEndpoint}`, {
+      const mainEndpoint = 'This is changed on purpose. please set to new endpoint';
+      console.log(`Server endpoint: ${mainEndpoint}`);
+      const newSocket = io(mainEndpoint, {
         query: {
           userid: userData.userid,
           username: userData.username,
           userType: userData.userType,
           token: userData.token,
         },
+        path: '/dnd-server/socket.io',
+        transports: ['websocket', 'polling'],
       }); // TODO: should route deeper not base
       setSocket(newSocket);
       setLoading(false);

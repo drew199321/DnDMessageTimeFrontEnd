@@ -15,7 +15,7 @@ import './Index.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/dnd">
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route exact path="/registration" component={Registration} />
