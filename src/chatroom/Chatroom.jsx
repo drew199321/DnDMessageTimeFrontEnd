@@ -19,7 +19,7 @@ export default function Chatroom() {
     if (data) {
       const userData = JSON.parse(data);
       setUser(userData);
-      const mainEndpoint = 'This is changed on purpose. please set to new endpoint';
+      const mainEndpoint = 'bender.cs.csubak.edu';
       console.log(`Server endpoint: ${mainEndpoint}`);
       const newSocket = io(mainEndpoint, {
         query: {
