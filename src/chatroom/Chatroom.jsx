@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import io from 'socket.io-client';
 
-//import serverEndpoint from '../_helpers/serverEndpoint';
 import Messages from './Messages';
 import MessageInput from './MessageInput';
 import './Chatroom.css';
