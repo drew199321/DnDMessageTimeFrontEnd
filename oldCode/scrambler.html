@@ -1,0 +1,41 @@
+<!--This code exists as a test/jumping off point for the senior project text scrambler-->
+<!--Plan is to have a 0-100 slider/input to allow for different levels of scrambling-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Scrambler</title>
+    </head>
+    <body>
+        <h1>Text Scrambler</h1>
+        <div id="scramble">
+            <form name="textScrambler">
+                Text you want to scramble: <input type="text" id="input" name="input"><br />
+                How Scrambled you want the text: <br />
+                <input type="range" min="0" max="100" value="50" class="scrslide" 
+                                                                 id="slide" oninput="updatePercent(value)">
+                <input type="number" min="0" max="100" required="true" 
+                                                       value ="50" class="scrnum" id="percent" oninput="updateSlider(value)">%
+                                                       <br />
+                                                       <input type="button" value="Scramble" onclick="scramble()">
+            </form>
+            <div id="errors">
+            </div>
+            <div id="output">
+                <h2>Scrambler 1:</h2>
+                <p>Letters of the string are scrambled with the rest of the string<br \>preserving spaces, meaning that the number of characters per word is the same but the letters may not belong to that word.</p>
+                <div id="S1">
+                </div>
+                <h2>Scrambler 2:</h2>
+                <p>Letters of the string are scrambled within their own word, with spaces preserved.</p>
+                <div id="S2">
+                </div>
+                <h2>Scrambler 3:</h2>
+                <p>Letters are not rearranged but instead each letter is randomly replaced<br \>with another random letter. This becomes almost impossible to unscramble at high percentages</p>
+                <div id="S3">
+                </div>
+            </div>
+        </div>
+        <script src="scrambler.js"></script>
+    </body>
+</html>

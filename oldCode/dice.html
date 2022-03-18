@@ -1,0 +1,60 @@
+<!--This code exists as a test/jumping off point for the senior project dice roller-->
+<!--Plan is to have the user select the number of each dice to be rolled and return the values-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Dice Roller</title>
+    </head>
+    <body>
+        <h1>Dice Roller</h1>
+        <div id="roller">
+            <form name="diceroller">
+                <table>
+                    <tr>
+                        <th>D2</th>
+                        <th>D4</th>
+                        <th>D6</th>
+                        <th>D8</th>
+                        <th>D10</th>
+                        <th>D12</th>
+                        <th>D20</th>
+                        <th>D100</th>
+                    </tr>
+                    <tr>
+                        <td><input type="number" min="0" max="20" value="0" name="d2" id="dice"></td>
+                        <td><input type="number" min="0" max="20" value="0" name="d4" id="dice"></td>
+                        <td><input type="number" min="0" max="20" value="0" name="d6" id="dice"></td>
+                        <td><input type="number" min="0" max="20" value="0" name="d8" id="dice"></td>
+                        <td><input type="number" min="0" max="20" value="0" name="d10" id="dice"></td>
+                        <td><input type="number" min="0" max="20" value="0" name="d12" id="dice"></td>
+                        <td><input type="number" min="0" max="20" value="0" name="d20" id="dice"></td>
+                        <td><input type="number" min="0" max="20" value="0" name="d100" id="dice"></td>
+                    </tr>
+                </table>
+                <input type="button" value="Roll" onclick="diceroll()">
+            </form>
+        </div>
+        <div id="output">
+            <div id="d2">
+            </div>
+            <div id="d4">
+            </div>
+            <div id="d6">
+            </div>
+            <div id="d8">
+            </div>
+            <div id="d10">
+            </div>
+            <div id="d12">
+            </div>
+            <div id="d20">
+            </div>
+            <div id="d100">
+            </div>
+            <div id="total">
+            </div>
+        </div>
+        <script src="roller.js"></script>
+    </body>
+</html>

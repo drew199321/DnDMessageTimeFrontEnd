@@ -1,0 +1,88 @@
+<!--This code exists as a test/jumping off point for the senior project dice roller-->
+<!--Plan is to have the user select the number of each dice to be rolled and return the values-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Dice Roller</title>
+        <link rel="stylesheet" href="tmpcss.css">
+    </head>
+    <body>
+        <h1>Dice Roller</h1>
+        <div id="roller">
+            <form name="diceroller">
+                <form>
+                    <div class="multiselect">
+                        <div class="selectBox" onclick="showCheckboxes()">
+                            <select>
+                                <option>Choose Dice</option>
+                            </select>
+                            <div class="overSelect"></div>
+                        </div>
+                        <div id="checkboxes">
+                            <label for="2">
+                                <input type="checkbox" class="check" id="2" />D2</label>
+                            <label for="4">
+                                <input type="checkbox" class="check" id="4" />D4</label>
+                            <label for="6">
+                                <input type="checkbox" class="check" id="6" />D6</label>
+                            <label for="8">
+                                <input type="checkbox" class="check" id="8" />D8</label>
+                            <label for="10">
+                                <input type="checkbox" class="check" id="10" />D10</label>
+                            <label for="12">
+                                <input type="checkbox" class="check" id="12" />D12</label>
+                            <label for="20">
+                                <input type="checkbox" class="check" id="20" />D20</label>
+                            <label for="100">
+                                <input type="checkbox" class="check" id="100" />D100</label>
+                        </div>
+                    </div>
+                </form><table>
+                    <tr id="headers">
+                        <th class = "d2"></th>
+                        <th class="d4"></th>
+                        <th class="d6"></th>
+                        <th class="d8"></th>
+                        <th class="d10"></th>
+                        <th class="d12"></th>
+                        <th class="d20"></th>
+                        <th class="d100"></th>
+                    </tr>
+                    <tr id="numinput">
+                        <td class = "num2"></td>
+                        <td class = "num4"></td>
+                        <td class = "num6"></td>
+                        <td class = "num8"></td>
+                        <td class = "num10"></td>
+                        <td class = "num12"></td>
+                        <td class = "num20"></td>
+                        <td class = "num100"></td>
+                    </tr>
+                </table>
+                <input type="button" value="Roll" onclick="diceroll()">
+            </form>
+        </div>
+        <div id="output">
+            <div id="d2">
+            </div>
+            <div id="d4">
+            </div>
+            <div id="d6">
+            </div>
+            <div id="d8">
+            </div>
+            <div id="d10">
+            </div>
+            <div id="d12">
+            </div>
+            <div id="d20">
+            </div>
+            <div id="d100">
+            </div>
+            <div id="total">
+            </div>
+        </div>
+        <script src="tmproll.js"></script>
+    </body>
+</html>
